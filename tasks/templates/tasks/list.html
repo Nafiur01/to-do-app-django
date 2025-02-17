@@ -1,0 +1,10 @@
+<h2>To do app </h2>
+
+{% for task in tasks %}
+    <div>
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.completed }}</p>
+        <p>{{ task.created }}</p>
+    </div>
+    <hr>
+{% endfor %}
