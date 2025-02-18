@@ -1,10 +1,16 @@
-<h2>To do app </h2>
+<h2>To do app</h2>
+
+<h4>Add Task</h4>
+<form method="post" action="/">
+  {% csrf_token %} {{form.title}}
+  <input type="submit" name="Create Task" />
+</form>
 
 {% for task in tasks %}
-    <div>
-        <h3>{{ task.title }}</h3>
-        <p>{{ task.completed }}</p>
-        <p>{{ task.created }}</p>
-    </div>
-    <hr>
+<div>
+  <a href="{% url 'update' task.id %}">Update</a>
+  <a href="{% url 'delete' task.id %}">Delete</a>
+  <p>{{ task }}</p>
+</div>
+<hr />
 {% endfor %}
