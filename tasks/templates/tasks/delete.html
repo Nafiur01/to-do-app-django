@@ -1,3 +1,10 @@
-<p>Are you sure you want to delete "{{item}}"?</p>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/delete.css' %}" />
+<p class="confirmation">Are you sure you want to delete "{{item}}"?</p>
 
-<a href="{% url 'list' %}">Cancel</a>
+<a href="{% url 'list' %}" class="cancel">Cancel</a>
+
+<form method="post" action="">
+  {% csrf_token %}
+  <input type="submit" name="Confirm" />
+</form>

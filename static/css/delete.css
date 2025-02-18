@@ -1,0 +1,18 @@
+.confirmation {
+  color: rgb(117, 21, 21);
+  font-size: 1.5rem;
+}
+
+.cancel{
+    text-decoration: none;
+    border: 1px solid rgb(82, 79, 255);
+    border-radius: 20px;
+    padding: 5px 4px;
+    font-size: large;
+    color:rgb(134, 132, 252)
+}
+
+.cancel:hover{
+    color:rgb(255, 255, 255);
+    background-color: rgb(82, 79, 255);
+}

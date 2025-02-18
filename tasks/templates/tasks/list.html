@@ -10,7 +10,11 @@
 <div>
   <a href="{% url 'update' task.id %}">Update</a>
   <a href="{% url 'delete' task.id %}">Delete</a>
+  {% if task.completed == True %}
+  <s>{{task}}</s>
+  {% else %}
   <p>{{ task }}</p>
+  {% endif %}
 </div>
 <hr />
 {% endfor %}
