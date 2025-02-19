@@ -1,20 +1,41 @@
-<h2>To do app</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/list.css' %}" /> 
+</head>
+<body>
+  <div style="background-color: rgb(212, 212, 255); border-radius: 20px;padding: 20px;margin: 10px; ">
+    <div class="title">
+      <h2 style="padding: 0px; color: rgb(35, 0, 189); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">To do app</h2>
+    
+      <h4 style="font-family: 'Courier New', Courier, monospace;">Add Task</h4>
+    
+      <form method="post" action="/">
+        {% csrf_token %} {{form.title}}
+        <input type="submit" name="Create Task" style="height: 50px; border-radius: 10px;" />
+      </form>
+    </div>
+    
+    {% for task in tasks %}
+    <div class="blogs">
+      {% if task.completed == True %}
+      <s>{{task}}</s>
+      {% else %}
+      <p style="font-family: Arial, Helvetica, sans-serif;font-weight: lighter;font-size: larger;"><span>{{task.id}}. </span>{{ task }}</p>
+      {% endif %}
+      <div class="buttons">
+        <a style="text-decoration: none; color: rgb(79, 52, 255); padding: 5px;" href="{% url 'update' task.id %}">Update</a>
+        <a style="text-decoration: none;color: red;padding: 5px;" href="{% url 'delete' task.id %}">Delete</a>
+      </div>
+    </div>
+    <hr style="width: 200px" />
+    {% endfor %}
+  </div>
+</body>
+</html>
 
-<h4>Add Task</h4>
-<form method="post" action="/">
-  {% csrf_token %} {{form.title}}
-  <input type="submit" name="Create Task" />
-</form>
 
-{% for task in tasks %}
-<div>
-  <a href="{% url 'update' task.id %}">Update</a>
-  <a href="{% url 'delete' task.id %}">Delete</a>
-  {% if task.completed == True %}
-  <s>{{task}}</s>
-  {% else %}
-  <p>{{ task }}</p>
-  {% endif %}
-</div>
-<hr />
-{% endfor %}
